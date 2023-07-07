@@ -17,3 +17,11 @@ body{
 .font-nunito{
     font-family: 'Nunito', sans-serif;
 }
+
+
+.swiper-pagination-bullet{
+    @apply bg-zinc-400
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    @apply bg-zinc-900 
+}

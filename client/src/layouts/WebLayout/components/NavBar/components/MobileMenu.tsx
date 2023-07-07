@@ -1,7 +1,8 @@
 import cs from "classnames";
 import { NavLink } from "react-router-dom";
-
+import { memo } from "react";
 function MobileMenu() {
+  
   return (
     <>
       <nav>
@@ -64,4 +65,4 @@ function MobileMenu() {
   );
 }
 
-export default MobileMenu;
+export default memo(MobileMenu);

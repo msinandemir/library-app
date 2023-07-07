@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import cs from "classnames";
 import Button from "../../../../../components/Button";
+import { memo } from "react";
 
 function DesktopMenu() {
+  
   return (
     <nav className='flex w-full items-center'>
       <div className='flex-1'>
@@ -47,4 +49,4 @@ function DesktopMenu() {
   );
 }
 
-export default DesktopMenu;
+export default memo(DesktopMenu);

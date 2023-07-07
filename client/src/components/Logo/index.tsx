@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import cs from 'classnames'
 import { useBreakpoint } from "../../hooks/useBreakpoint";
-
+import { memo,useMemo } from "react";
 
 interface LogoComponent{
   responsive: boolean
 }
 function index(props:LogoComponent) {
-  const {responsive} = props
+  const {responsive} = useMemo(() => props, [props.responsive])
   const {breakpoint} = useBreakpoint()
+  
   return (
     <>
       <NavLink className='select-none flex gap-2 items-center' to={"/"}>
@@ -28,4 +29,4 @@ function index(props:LogoComponent) {
   );
 }
 
-export default index;
+export default memo(index);

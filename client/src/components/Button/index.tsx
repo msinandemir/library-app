@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { FC, HTMLAttributes, ReactNode, createElement } from "react";
+import { FC, HTMLAttributes, ReactNode, createElement,memo } from "react";
 
 interface ButtonProps extends HTMLAttributes<HTMLElement> {
   children: string | ReactNode;
@@ -8,7 +8,8 @@ interface ButtonProps extends HTMLAttributes<HTMLElement> {
   as: string;
 }
 
-const Button: FC<ButtonProps> = ({
+
+const Button: FC<ButtonProps> = memo(({
   children,
   variant = "primary",
   size = "normal",
@@ -20,7 +21,7 @@ const Button: FC<ButtonProps> = ({
     {
       ...props,
       className: cn(
-        "font-semibold rounded-lg flex justify-center items-center hover:opacity-70 ",
+        "font-semibold rounded-lg flex justify-center items-center hover:opacity-70 w-fit ",
         {
           "border border-black  ": variant === "outline",
           "bg-primary  text-white": variant === "primary",
@@ -32,6 +33,6 @@ const Button: FC<ButtonProps> = ({
     },
     children
   );
-};
-
+}
+);
 export default Button;

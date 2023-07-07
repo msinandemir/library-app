@@ -11,11 +11,14 @@ function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const { breakpoint } = useBreakpoint();
 
+
   useEffect(() => {
     const handleScrollEvent = () => {
       const scrollY = window.scrollY;
       if (scrollY > 0) setIsScroll(true);
       else setIsScroll(false);
+
+
     };
 
     document.addEventListener("scroll", handleScrollEvent);
@@ -29,6 +32,7 @@ function NavBar() {
     if (breakpoint === "desktop") {
       setIsMobileMenuOpen(false);
     }
+
   }, [breakpoint]);
 
   const handleMobileMenu = () => {
@@ -36,8 +40,8 @@ function NavBar() {
   };
   return (
     <header
-      className={cs("flex items-center  w-full  transition-all", {
-        "border-b border-black/20 backdrop-blur-md bg-transparent fixed":
+      className={cs("flex items-center  w-full  transition-all z-50", {
+        "border-b border-black/20 backdrop-blur-md bg-transparent fixed inset-0":
           isScroll,
 
         "h-[120px]": isMobileMenuOpen,
