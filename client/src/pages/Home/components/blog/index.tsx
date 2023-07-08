@@ -2,7 +2,7 @@ import React from 'react'
 
 function BlogSection() {
   return (
-    <div>BlogSection</div>
+    <section className='mt-20'>BlogSection</section>
   )
 }
 

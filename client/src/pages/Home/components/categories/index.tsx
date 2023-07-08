@@ -8,7 +8,7 @@ function CategoriesSection() {
   };
   const items = new Array(20).fill(fakeData);
   return (
-    <section className='mt-20'>
+    <section className='mt-20 '>
       <Swiper
         className='select-none'
         spaceBetween={0}
@@ -23,7 +23,7 @@ function CategoriesSection() {
         }}
       >
         {items.map((item, key) => (
-          <SwiperSlide key={key}>
+          <SwiperSlide className="!w-[180px]" key={key}>
             <CategoryItem item={item} />
           </SwiperSlide>
         ))}
