@@ -19,7 +19,7 @@ function LatestSeciton() {
     <section className='mt-20 flex flex-col gap-5 '>
       <header>
         <h4 className='text-primaryText font-semibold text-2xl'>
-          SON EKLENENLER
+          SON&nbsp;EKLENENLER
         </h4>
       </header>
       <div>

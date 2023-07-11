@@ -2,6 +2,7 @@ import Button from "../../../../components/Button";
 import { NavLink } from "react-router-dom";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Book from "../../../../assets/images/book.svg";
+import { motion } from "framer-motion";
 
 function ExplorerSection() {
   return (
@@ -25,7 +26,14 @@ function ExplorerSection() {
       </div>
 
       <div>
-        <img src={Book} alt='book' />
+        <motion.img
+          drag='x'
+          dragConstraints={{ left: 0, right: 300 }}
+          dragSnapToOrigin
+          animate={{ x: [-1000, 500, 0] }}
+          src={Book}
+          alt='book'
+        />
       </div>
     </section>
   );
