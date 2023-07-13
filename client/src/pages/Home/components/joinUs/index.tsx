@@ -1,13 +1,22 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../../../components/Button";
+import cs from 'classnames'
+import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 
 export default function JoinUsSection() {
+  const {breakpoint} = useBreakpoint()
   return (
     <section className='mt-20 flex flex-col gap-10'>
       <header>
-        <h1 className='font-bold text-6xl'>HALA ARAMIZA KATILMADIN MI?</h1>
+        <h1 className={cs('font-bold text-center ',{
+          'text-6xl':breakpoint==='desktop',
+          'text-4xl':breakpoint==='mobile'
+        })}>HALA ARAMIZA KATILMADIN MI?</h1>
       </header>
-      <div className='font-semibold text-xl flex flex-col gap-10'>
+      <div className={cs('font-semibold  flex flex-col',{
+        'px-2 text-lg gap-7':breakpoint === 'mobile',
+        ' text-xl gap-10':breakpoint === 'desktop',
+      })}>
         <p>
           Kütüphane sitemizin tamamından faydalanmak, favori kitaplarını
           kaydetmek ve yorum yapmak için ücretsiz bir üye olabilirsiniz. Üyelik
@@ -43,11 +52,17 @@ export default function JoinUsSection() {
         </p>
       </div>
       <div className='flex items-center flex-col font-semibold gap-2'>
-        <Button variant='outline' size='normal' as={NavLink} to='/register'>
-          <span className='text-2xl text-black/90'>
-            HEMEN&nbsp;ÜYE&nbsp;OL&nbsp;VE&nbsp;AYRICALIKLARDAN&nbsp;YARARLAN
+        <div className="animate-bounce">
+        <Button variant='outline' size='large' as={NavLink} to='/register'>
+          <span className={cs(' text-black/90 ',{
+            'text-2xl':breakpoint === 'desktop',
+            'text-xl ':breakpoint === 'mobile',
+          })}>
+            HEMEN&nbsp;ÜYE&nbsp; OL&nbsp;{breakpoint === 'desktop' && 'VE AYRICALIKLARDAN YARARLAN'}
           </span>
         </Button>
+        </div>
+        
         <div className='flex gap-2'>
           <p className='text-lg'>ZATEN&nbsp;BİR&nbsp;HESABIN&nbsp;VARSA</p>{" "}
           <NavLink to='/login'>

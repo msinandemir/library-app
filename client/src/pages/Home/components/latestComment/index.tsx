@@ -1,6 +1,10 @@
 import CommentItem from "../../../../components/CommentItem";
+import SectionHeader from '../sectionHeader';
+import cs from 'classnames'
+import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 
 function LatestCommentSection() {
+  const {breakpoint} = useBreakpoint()
   const fakeData = [
     {
       id: 0,
@@ -23,12 +27,10 @@ function LatestCommentSection() {
   ];
   return (
     <section className='mt-20 flex flex-col gap-5'>
-      <header>
-        <span className='text-primaryText text-2xl font-semibold'>
-          SON&nbsp;YORUMLAR
-        </span>
-      </header>
-      <div className="flex gap-8">
+    <SectionHeader title='SON&nbsp;YORUMLAR' />
+      <div className={cs("flex mx-auto gap-7",{
+        'flex-col':breakpoint === 'mobile'
+      })}>
         {fakeData.map((item,index) => (
           <CommentItem item={item} key={index} />
         ))}

@@ -5,8 +5,9 @@ import BookItem from "../../../../components/BookItem";
 import Button from "../../../../components/Button";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { NavLink } from "react-router-dom";
-
-
+import SectionHeader from "../sectionHeader";
+import cs from 'classnames'
+import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 function LatestSeciton() {
   const fakeData = {
     id: 1,
@@ -15,13 +16,10 @@ function LatestSeciton() {
     photo: thumbnail,
   };
   const item = new Array(20).fill(fakeData);
+  const {breakpoint} = useBreakpoint()
   return (
     <section className='mt-20 flex flex-col gap-5 '>
-      <header>
-        <h4 className='text-primaryText font-semibold text-2xl'>
-          SON&nbsp;EKLENENLER
-        </h4>
-      </header>
+      <SectionHeader title='SON&nbsp;EKLENENLER' />
       <div>
         <Swiper
           className='!pb-7  select-none'
@@ -48,9 +46,16 @@ function LatestSeciton() {
           ))}
         </Swiper>
       </div>
-      <div className="flex justify-center">
-
-      <Button as={NavLink} size="normal" variant="outline" to='/latest'><span className="font-semibold text-xl">Daha&nbsp;Fazla&nbsp;Göster</span><MdOutlineArrowForwardIos size={30} /></Button>
+      <div className='flex justify-center'>
+        <Button as={NavLink} size='normal' variant='outline' to='/latest'>
+          <span className={cs('font-semibold ',{
+            'text-xl': breakpoint ==='desktop',
+            'text-lg': breakpoint ==='mobile',
+          })}>
+            Daha&nbsp;Fazla&nbsp;Göster
+          </span>
+          <MdOutlineArrowForwardIos size={breakpoint === 'desktop'?30:20} />
+        </Button>
       </div>
     </section>
   );
