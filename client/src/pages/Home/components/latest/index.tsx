@@ -12,7 +12,7 @@ import BookModel from "../../../../models/BookModel";
 import { getBooksForSlider } from "../../../../services/api";
 import { Spinner } from "../../../../components/Spinner";
 
-function LatestSeciton() {
+function LatestSection() {
   const { breakpoint } = useBreakpoint();
   const [books, setBooks] = useState<BookModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -102,4 +102,4 @@ function LatestSeciton() {
   );
 }
 
-export default LatestSeciton;
+export default LatestSection;

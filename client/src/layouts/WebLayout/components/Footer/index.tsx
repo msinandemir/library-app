@@ -6,7 +6,7 @@ import cs from "classnames";
 function Footer() {
   const { breakpoint } = useBreakpoint();
   return (
-    <footer className='h-60 mt-20 bg-black/90 justify-center items-center flex '>
+    <footer className='h-60 mt-20 select-none bg-black/90 justify-center items-center flex '>
       <div
         className={cs("flex  items-center", {
           "flex-col gap-4 ": breakpoint === "mobile",
@@ -15,7 +15,7 @@ function Footer() {
       >
         <div className='flex items-center gap-3'>
           <Logo responsive={false} white />
-          <span className={cs('text-white/40',{
+          <span className={cs('text-white/40 ',{
             'text-xs':breakpoint === 'mobile'
           })}>
             Tüm&nbsp;hakları&nbsp;saklıdır.&nbsp;©
