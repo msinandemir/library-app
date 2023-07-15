@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../../../components/Button";
 import cs from 'classnames'
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
@@ -53,7 +53,7 @@ export default function JoinUsSection() {
       </div>
       <div className='flex items-center flex-col font-semibold gap-2'>
         <div className="animate-bounce">
-        <Button variant='outline' size='large' as={NavLink} to='/register'>
+        <Button variant='outline' size='large' as={Link} to='/register'>
           <span className={cs(' text-black/90 ',{
             'text-2xl':breakpoint === 'desktop',
             'text-xl ':breakpoint === 'mobile',
@@ -65,11 +65,11 @@ export default function JoinUsSection() {
         
         <div className='flex gap-2'>
           <p className='text-lg'>ZATEN&nbsp;BİR&nbsp;HESABIN&nbsp;VARSA</p>{" "}
-          <NavLink to='/login'>
+          <Link to='/login'>
             <span className='font-bold text-lg underline text-primaryText hover:opacity-70'>
               GİRİŞ&nbsp;YAP
             </span>
-          </NavLink>
+          </Link>
         </div>
       </div>
     </section>

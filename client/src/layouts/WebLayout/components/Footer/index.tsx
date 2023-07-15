@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../../../components/Logo";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 import cs from "classnames";
@@ -26,24 +26,24 @@ function Footer() {
             <div>
               <ul className='flex flex-col gap-1'>
                 <li>
-                  <NavLink to='/'>
+                  <Link to='/'>
                     <span className='hover:text-white'>Ana&nbsp;Sayfa</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to='/search'>
+                  <Link to='/search'>
                     <span className='hover:text-white'>Kitap&nbsp;Ara</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to='/login'>
+                  <Link to='/login'>
                     <span className='hover:text-white'>Giriş&nbsp;Yap</span>
-                  </NavLink>
+                  </Link>
                 </li>
                 <li>
-                  <NavLink to='/register'>
+                  <Link to='/register'>
                     <span className='hover:text-white'>Üye&nbsp;Ol</span>
-                  </NavLink>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -54,29 +54,29 @@ function Footer() {
               'gap-3 mt-2': breakpoint === 'mobile',
             })}>
               <li>
-                <NavLink to='/'>
+                <Link to='/'>
                   <span className='hover:text-white'>Kategori</span>
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink to='/'>
+                <Link to='/'>
                   <span className='hover:text-white'>Kategori</span>
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink to='/'>
+                <Link to='/'>
                   <span className='hover:text-white'>Kategori</span>
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink to='/'>
+                <Link to='/'>
                   <span className='hover:text-white'>Kategori</span>
-                </NavLink>
+                </Link>
               </li>
               <li>
-                <NavLink to='/'>
+                <Link to='/'>
                   <span className='hover:text-white'>Kategori</span>
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { BookItem } from "../../../../components/BookItem";
 import Button from "../../../../components/Button";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SectionHeader from "../sectionHeader";
 import cs from "classnames";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
@@ -82,7 +82,7 @@ function LatestSection() {
             </Swiper>
           </div>
           <div className='flex justify-center'>
-            <Button as={NavLink} size='normal' variant='outline' to='/latest'>
+            <Button as={Link} size='normal' variant='outline' to='/latest'>
               <span
                 className={cs("font-semibold ", {
                   "text-xl": breakpoint === "desktop",

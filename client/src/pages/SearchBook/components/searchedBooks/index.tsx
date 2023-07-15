@@ -1,9 +1,11 @@
 import React from 'react'
+import BookModel from '../../../../models/BookModel'
+import { SearchBookItem } from '../../../../components/SearchBookItem'
 
-function SearchedBooks() {
+export const SearchedBooks:React.FC<{books:BookModel[]}> =(props) =>{
   return (
-    <div>SearchedBooks</div>
+    <section className='grid grid-cols-3 gap-5 mt-10'>{props.books.map((item,index) => (
+      <SearchBookItem book={item} key={index} />
+    ))}</section>
   )
 }
-
-export default SearchedBooks

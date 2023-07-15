@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Category {
   id: number;
@@ -11,12 +11,12 @@ interface CategoryComponentProps {
 function index(props: CategoryComponentProps) {
   const { item } = props;
   return (
-    <NavLink
+    <Link
       className='w-[140px] h-[45px] shadow-2xl bg-primary text-white/90  flex justify-center items-center rounded-lg mx-auto '
       to='/'
     >
       <span className='font-bold text-xl'>{item.name}</span>
-    </NavLink>
+    </Link>
   );
 }
 

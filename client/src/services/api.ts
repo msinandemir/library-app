@@ -9,3 +9,12 @@ export const getBooksForSlider = async () => {
 
 
 
+export const getBooksWithParams = async (page:number,size:number) =>  {
+  const response = await axios.get(BASE_URL + `books?page=${page}&size=${size}`)
+  return response.data;
+}
+
+export const getBooksWithSearchParam = async (page:number,size:number,searchParam:string) => {
+const response = await axios.get(BASE_URL +`books/search/findByTitleContaining?title=${searchParam}&page=${page}&size=${size}`)
+return response.data;
+}

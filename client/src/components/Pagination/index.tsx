@@ -6,7 +6,11 @@ import {
 } from "react-icons/md";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 
-export const Pagination: React.FC<{ range: number; count: number }> = (props) => {
+export const Pagination: React.FC<{
+  range: number;
+  count: number;
+  setCurrentPage: (value: number) => void;
+}> = (props) => {
   const { breakpoint } = useBreakpoint();
 
   return (
@@ -14,7 +18,7 @@ export const Pagination: React.FC<{ range: number; count: number }> = (props) =>
       className='pagination'
       breakLabel='...'
       nextLabel={<MdOutlineKeyboardArrowRight size={18} />}
-      // onPageChange={handlePageClick}
+      onPageChange={(e) => props.setCurrentPage(e.selected)}
       pageRangeDisplayed={props.range}
       marginPagesDisplayed={breakpoint === "desktop" ? 2 : 1}
       pageCount={props.count}

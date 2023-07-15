@@ -1,5 +1,5 @@
 import cs from "classnames";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 interface BlogCardProps {
@@ -26,9 +26,9 @@ function BlogCard(props: BlogCardProps) {
         'w-[300px] h-[140px]':variant ==='horizontal',
         'w-[260px] h-[210px]':breakpoint ==='mobile'
       })} src={item.photo} alt={item.name} />
-      <NavLink className={cs('  hover:opacity-70', {
+      <Link className={cs('  hover:opacity-70', {
         'flex-1': variant === 'horizontal'
-      })} to={`/blog/${item.id}`}>{item.name}</NavLink>
+      })} to={`/blog/${item.id}`}>{item.name}</Link>
     </div>
   );
 }

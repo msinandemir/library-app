@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cs from "classnames";
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 import BookModel from "../../models/BookModel";
@@ -11,7 +11,7 @@ export const  BookItem:React.FC<{book: BookModel}> = (props) =>{
 
   return (
     <>
-      <NavLink
+      <Link
         to={`/${props.book.id}`}
         className='flex flex-col justify-center items-center gap-1.5 '
       >
@@ -27,7 +27,7 @@ export const  BookItem:React.FC<{book: BookModel}> = (props) =>{
         <span className='font-semibold text-xl text-black/40'>
           {props.book.author}
         </span>
-      </NavLink>
+      </Link>
     </>
   );
 }

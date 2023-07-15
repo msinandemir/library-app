@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import cs from "classnames";
 import Button from "../../../../../components/Button";
 import { memo } from "react";
@@ -38,10 +38,10 @@ function DesktopMenu() {
         </ul>
       </div>
       <div className='flex items-center gap-6 '>
-        <Button as={NavLink} size='normal' variant='outline' to={"/login"}>
+        <Button as={Link} size='normal' variant='outline' to={"/login"}>
           Giriş&nbsp;Yap
         </Button>
-        <Button as={NavLink} size='normal' variant='primary' to={"/register"}>
+        <Button as={Link} size='normal' variant='primary' to={"/register"}>
           Üye&nbsp;Ol
         </Button>
       </div>

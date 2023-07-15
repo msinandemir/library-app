@@ -1,5 +1,5 @@
 import Button from "../../../../components/Button";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import Book from "../../../../assets/images/book.svg";
 import { motion } from "framer-motion";
@@ -47,7 +47,7 @@ function ExplorerSection() {
           atın. Farklı türlerden seçilmiş olan bu kitaplar sizi etkileyen
           hikayeler ve unutulmaz karakterlerle buluşturacak.
         </p>
-        <Button variant='primary' as={NavLink} size={breakpoint === 'desktop' ? 'large' : 'normal'} to='/en-iyi'>
+        <Button variant='primary' as={Link} size={breakpoint === 'desktop' ? 'large' : 'normal'} to='/en-iyi'>
           <span className={cs(' font-semibold',{
             'text-xl': breakpoint === 'desktop',
             'text-lg': breakpoint === 'mobile',

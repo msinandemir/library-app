@@ -22,15 +22,15 @@ body{
 .swiper-pagination-bullet{
     @apply bg-zinc-400
 }
-.swiper-pagination-bullet.swiper-pagination-bullet-active {
-    @apply bg-zinc-900 
+.swiper-pagination-bullet.swiper-pagination-bullet-active.swiper-pagination-bullet-active-main {
+    @apply bg-zinc-700 
 }
 
 
 
 /* PAGINATION */
 .pagination {
-    @apply select-none flex items-center gap-x-1.5 border border-zinc-200 p-3 rounded
+    @apply select-none flex items-center gap-x-1.5 p-3 mt-20
 }
 .pagination .previous {
     @apply mr-auto

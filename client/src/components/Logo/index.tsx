@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cs from 'classnames'
 import { useBreakpoint } from "../../hooks/useBreakpoint";
 import { memo,useMemo } from "react";
@@ -13,7 +13,7 @@ function index(props:LogoComponent) {
   
   return (
     <>
-      <NavLink className='select-none flex gap-2 items-center' to={"/"}>
+      <Link className='select-none flex gap-2 items-center' to={"/"}>
         <span className={cs('font-logo text-5xl font-bold ',{
           'text-5xl':!responsive,
           'text-2xl':responsive && breakpoint === 'mobile',
@@ -28,7 +28,7 @@ function index(props:LogoComponent) {
         })}>
           Library&nbsp;-&nbsp;App
         </span>
-      </NavLink>
+      </Link>
     </>
   );
 }
