@@ -3,8 +3,12 @@ import BookModel from "../../models/BookModel";
 import { Header } from "./components/header";
 import { SearchedBooks } from "./components/searchedBooks";
 import { Pagination } from "../../components/Pagination";
-import { getBooksWithParams } from "../../services/api";
+import {
+  getBooksWithParams,
+  getBooksWithSearchParam,
+} from "../../services/api";
 import { Spinner } from "../../components/Spinner";
+import { scrollToTop } from "../../utils/scroll";
 
 export const SearchBook: React.FC = () => {
   const [books, setBooks] = useState<BookModel[]>([]);
@@ -19,9 +23,13 @@ export const SearchBook: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const res = await getBooksWithParams(currentPage, pageSize);
+      let res;
+      if (!searchParam) res = await getBooksWithParams(currentPage, pageSize);
+      else
+        res = await getBooksWithSearchParam(currentPage, pageSize, searchParam);
       const resData = res._embedded.books;
       const loadedBooks: BookModel[] = [];
+      console.log(res);
 
       for (const key in resData) {
         loadedBooks.push({
@@ -40,25 +48,29 @@ export const SearchBook: React.FC = () => {
       setTotalBooks(res.page.totalElements);
       setIsLoading(false);
     };
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop(0,'smooth')
     fetchData();
-  }, [currentPage, pageSize]);
+  }, [currentPage]);
 
   return (
     <>
       <header className='flex flex-col gap-4'>
-        <Header searchParam={searchParam} setSearchParam={setSearchParam} setSearchedData={setSearchedData}/>
-        {totalBooks > 0 ? (
-          <span className='font-semibold'>
+        <Header
+          searchParam={searchParam}
+          setSearchParam={setSearchParam}
+          setSearchedData={setSearchedData}
+        />
+        {(totalBooks > 0 && (
+          <span className='font-semibold ml-4 lg:ml-0'>
             <span className='font-bold text-green-700'>{totalBooks}</span>
             &nbsp;Adet&nbsp;Sonuç&nbsp;Bulundu.
           </span>
-        ) : (
-          <span className='font-semibold'>
-            "<span className='font-bold text-red-600'>{searchParam}</span>
-            "&nbsp;Adında&nbsp;Bir&nbsp;Kitap&nbsp;Bulunamadı.
-          </span>
-        )}
+        )) ||
+          (!isLoading && totalBooks === 0 && (
+            <span className='font-semibold ml-4 lg:ml-0 text-red-600'>
+              Kitap&nbsp;Bulunamadı.
+            </span>
+          ))}
       </header>
       {(isLoading && (
         <div className='flex justify-center items-center h-screen'>

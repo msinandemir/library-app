@@ -6,6 +6,7 @@ interface ButtonProps extends HTMLAttributes<HTMLElement> {
   variant: "primary" | "outline";
   size: "small" | "normal" | "large";
   as: string;
+  className?:string
 }
 
 
@@ -14,6 +15,7 @@ const Button: FC<ButtonProps> = memo(({
   variant = "primary",
   size = "normal",
   as,
+  className,
   ...props
 }) => {
   return createElement(
@@ -28,9 +30,11 @@ const Button: FC<ButtonProps> = memo(({
           "px-3  h-8 text-sm": size === "small",
           "px-5  h-10 text-normal": size === "normal",
           "px-5  h-12 ": size === "large",
+          [className]:!!className
         }
       ),
     },
+    
     children
   );
 }

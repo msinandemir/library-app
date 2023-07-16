@@ -6,7 +6,7 @@ function WebLayout() {
   return (
     <>
       <NavBar />
-      <main className='max-w-[1000px] mx-auto'>
+      <main className='max-w-[1000px] mx-auto min-h-[calc(100vh-380px)]'>
         <Outlet />
       </main>
       <Footer />
