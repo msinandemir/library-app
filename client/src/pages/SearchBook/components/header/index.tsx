@@ -1,19 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../../../components/Button";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
-import cs from 'classnames'
+import cs from "classnames";
+import { useSearchParams } from "react-router-dom";
 
-interface HeaderProps {
-  searchParam: string;
-  setSearchParam: (value: string) => void;
-  refetch:() => void
-}
-
-export const Header: React.FC<HeaderProps> = ({
-  searchParam,
-  setSearchParam,
-  refetch
-}) => {
+export const Header: React.FC = () => {
+  const [searhcParams, setSearchParams] = useSearchParams();
+  const [searchParam, setSearchParam] = useState<string>(searhcParams.get('filter')|| '');
 
   const handleSearchInputOnChange = (
     e: React.ChangeEvent<HTMLInputElement>
@@ -22,7 +15,8 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   const handleSearchButton = async () => {
-    refetch()
+    if (searchParam) setSearchParams({ filter: searchParam,page:'1' });
+    else setSearchParams({page:'1'});
   };
   const { breakpoint } = useBreakpoint();
 
@@ -41,8 +35,8 @@ export const Header: React.FC<HeaderProps> = ({
         variant='primary'
         onClick={() => handleSearchButton()}
         className={cs({
-          'w-20':breakpoint === 'desktop',
-          '!w-1/3':breakpoint === 'mobile',
+          "w-20": breakpoint === "desktop",
+          "!w-1/3": breakpoint === "mobile",
         })}
       >
         Ara

@@ -10,24 +10,34 @@ import {
 import { Spinner } from "../../components/Spinner";
 import { scrollToTop } from "../../utils/scroll";
 import { useQuery } from "react-query";
+import { useSearchParams } from "react-router-dom";
 
 export const SearchBook: React.FC = () => {
   const [books, setBooks] = useState<BookModel[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
   const [pageSize] = useState<number>(9);
   const [totalBooks, setTotalBooks] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
-  const [searchParam, setSearchParam] = useState<string>("");
+  const [searchParams,setSearchParams] = useSearchParams();
 
+  let searchParam = searchParams.get("filter");
+  let pageParam = Number(searchParams.get('page')) 
+ 
+ 
+  
   const fetchBooks = () => {
     if (searchParam) {
-      return getBooksWithSearchParam(currentPage, pageSize, searchParam);
+      if(pageParam > totalPage) {
+        const initPage = '1'
+        searchParams.set('a',initPage) 
+        setSearchParams(searchParam)
+      }
+      return getBooksWithSearchParam(pageParam - 1, pageSize, searchParam);
     }
-    return getBooksWithParams(currentPage, pageSize);
+    return getBooksWithParams(pageParam - 1, pageSize);
   };
 
-  const { isLoading, refetch ,isFetching} = useQuery(
-    ["books", currentPage, pageSize],
+  const { isLoading, isFetching } = useQuery(
+    ["books", pageParam, pageSize, searchParam],
     fetchBooks,
     {
       cacheTime: 0,
@@ -59,11 +69,7 @@ export const SearchBook: React.FC = () => {
   return (
     <>
       <header className='flex flex-col gap-4'>
-        <Header
-          searchParam={searchParam}
-          setSearchParam={setSearchParam}
-          refetch={refetch}
-        />
+        <Header />
         {(totalBooks > 0 && (
           <span className='font-semibold ml-4 lg:ml-0'>
             <span className='font-bold text-green-700'>{totalBooks}</span>
@@ -81,7 +87,7 @@ export const SearchBook: React.FC = () => {
           <Spinner />
         </div>
       )) || <SearchedBooks books={books} />}
-      <Pagination count={totalPage} range={3} setCurrentPage={setCurrentPage} />
+      <Pagination count={totalPage} range={3}  />
     </>
   );
 };

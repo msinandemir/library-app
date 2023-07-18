@@ -14,7 +14,7 @@ export const getBooksWithParams = async (page:number,size:number) =>  {
   return response.data;
 }
 
-export const getBooksWithSearchParam = async (page:number,size:number,searchParam:string) => {
+export const getBooksWithSearchParam = async (page:number,size:number,searchParam:string | null) => {
 const response = await axios.get(BASE_URL +`books/search/findByTitleContainingIgnoreCase?title=${searchParam}&page=${page}&size=${size}`)
 return response.data;
 }
