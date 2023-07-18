@@ -17,20 +17,18 @@ export const SearchBook: React.FC = () => {
   const [pageSize] = useState<number>(9);
   const [totalBooks, setTotalBooks] = useState<number>(0);
   const [totalPage, setTotalPage] = useState<number>(0);
-  const [searchParams,setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   let searchParam = searchParams.get("filter");
-  let pageParam = Number(searchParams.get('page')) 
- 
- 
-  
+  let pageParam = Number(searchParams.get("page"));
+
   const fetchBooks = () => {
+    if (pageParam > totalPage) {
+      const initPage = "1";
+      searchParams.set("page", initPage);
+      setSearchParams(searchParams);
+    }
     if (searchParam) {
-      if(pageParam > totalPage) {
-        const initPage = '1'
-        searchParams.set('a',initPage) 
-        setSearchParams(searchParam)
-      }
       return getBooksWithSearchParam(pageParam - 1, pageSize, searchParam);
     }
     return getBooksWithParams(pageParam - 1, pageSize);
@@ -87,7 +85,7 @@ export const SearchBook: React.FC = () => {
           <Spinner />
         </div>
       )) || <SearchedBooks books={books} />}
-      <Pagination count={totalPage} range={3}  />
+      <Pagination count={totalPage} range={3} />
     </>
   );
 };
