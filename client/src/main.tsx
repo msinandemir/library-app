@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import "./assets/css/index.css";
 import "swiper/css";
 import "swiper/css/pagination";
+import 'react-photo-view/dist/react-photo-view.css';
 import Routes from "./routes";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";

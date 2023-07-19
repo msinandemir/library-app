@@ -9,7 +9,7 @@ import cs from "classnames";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 import { useEffect, useState } from "react";
 import BookModel from "../../../../models/BookModel";
-import { getBooksForSlider } from "../../../../services/api";
+import { getBooksForSlider } from "../../../../services/book";
 import { Spinner } from "../../../../components/Spinner";
 
 function LatestSection() {

@@ -12,7 +12,7 @@ export const  BookItem:React.FC<{book: BookModel}> = (props) =>{
   return (
     <>
       <Link
-        to={`/${props.book.id}`}
+        to={`/book/${props.book.id}`}
         className='flex flex-col justify-center items-center gap-1.5 '
       >
         <img

@@ -15,11 +15,11 @@ function ExplorerSection() {
       })}
     >
       <div
-        className={cs("flex flex-col gap-8 w-[650px]", {
+        className={cs("flex flex-col gap-8 w-[650px] mx-auto lg:mx-0 ", {
           "items-center": breakpoint === "mobile",
         })}
       >
-        <div className='flex gap-4 items-center'>
+        <div className='flex gap-4 items-center '>
           <h1
             className={cs(" font-bold", {
               "text-6xl": breakpoint === "desktop",

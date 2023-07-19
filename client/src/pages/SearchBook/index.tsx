@@ -6,7 +6,7 @@ import { Pagination } from "../../components/Pagination";
 import {
   getBooksWithParams,
   getBooksWithSearchParam,
-} from "../../services/api";
+} from "../../services/book";
 import { Spinner } from "../../components/Spinner";
 import { scrollToTop } from "../../utils/scroll";
 import { useQuery } from "react-query";
