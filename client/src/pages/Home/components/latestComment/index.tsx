@@ -1,5 +1,5 @@
 import CommentItem from "../../../../components/CommentItem";
-import SectionHeader from '../sectionHeader';
+import SectionHeader from '../../../../components/sectionHeader';
 import cs from 'classnames'
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 

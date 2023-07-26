@@ -4,7 +4,7 @@ import { BookItem } from "../../../../components/BookItem";
 import Button from "../../../../components/Button";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
-import SectionHeader from "../sectionHeader";
+import SectionHeader from "../../../../components/sectionHeader";
 import cs from "classnames";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
 import { Header } from "./components/header";
 import { SearchedBooks } from "./components/searchedBooks";
@@ -21,6 +21,10 @@ export const SearchBook: React.FC = () => {
 
   let searchParam = searchParams.get("filter");
   let pageParam = Number(searchParams.get("page"));
+
+  useEffect(() => {
+    setSearchParams({page:'1'})
+  },[])
 
   const fetchBooks = () => {
     if (pageParam > totalPage) {

@@ -2,7 +2,7 @@ import BooksAndWork from "../../../../assets/images/books-and-work.jpg";
 import Brain from "../../../../assets/images/brain.jpg";
 import EBook from "../../../../assets/images/e-book.jpg";
 import BlogCard from "../../../../components/BlogCard";
-import SectionHeader from "../sectionHeader";
+import SectionHeader from "../../../../components/sectionHeader";
 import cs from "classnames";
 import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 

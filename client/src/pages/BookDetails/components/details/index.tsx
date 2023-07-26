@@ -4,8 +4,10 @@ import Rating from "react-star-picker";
 import Button from "../../../../components/Button";
 import BookModel from "../../../../models/BookModel";
 
-export const Details: React.FC<{book:BookModel | undefined}> = ({book}) => {
-    const [rating, setRating] = useState<number>(5);
+export const Details: React.FC<{ book: BookModel | undefined }> = ({
+  book,
+}) => {
+  const [rating, setRating] = useState<number>(5);
 
   return (
     <>
@@ -26,7 +28,12 @@ export const Details: React.FC<{book:BookModel | undefined}> = ({book}) => {
           <div className='flex flex-col gap-2 text-black/70'>
             <h1 className='font-semibold text-3xl'>{book?.title}</h1>
             <h6 className='text-xl'>{book?.author}</h6>
-            <Rating value={rating} disabled={true} size={25} />
+            <Rating
+              value={rating}
+              disabled={true}
+              size={25}
+              onChange={() => {}}
+            />
             <p className='font-semibold mt-4 text-sm w-[500px]'>
               {book?.description}
             </p>
