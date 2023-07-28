@@ -4,18 +4,18 @@ import ExplorerSection from "./components/explorer";
 import JoinUsSection from "./components/joinUs";
 import LatestSection from "./components/latest";
 import LatestCommentSection from "./components/latestComment";
-import { motion } from "framer-motion";
+import { AnimatedSection } from "../../components/Animations";
 
 function Home() {
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <AnimatedSection>
       <ExplorerSection />
       <LatestSection />
       <CategoriesSection />
       <BlogSection />
       <LatestCommentSection />
       <JoinUsSection />
-    </motion.div>
+    </AnimatedSection>
   );
 }
 

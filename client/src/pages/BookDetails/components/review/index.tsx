@@ -1,17 +1,54 @@
-import React, { useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import Rating from "react-star-picker";
 import SectionHeader from "./../../../../components/sectionHeader";
 import Button from "../../../../components/Button";
 import { ReviewItem } from "../../../../components/ReviewItem";
 import ReviewModal from "../../../../models/ReviewModel";
 import { Spinner } from "../../../../components/Spinner";
+import { useInfiniteQuery } from "react-query";
+import { getReviewsByBookId } from "../../../../services/review";
+import { useParams } from "react-router-dom";
 
-export const Review: React.FC<{
-  reviews: ReviewModal[];
-  isFetchingNextPage: boolean;
-}> = ({ reviews, isFetchingNextPage }) => {
+export const Review: React.FC = () => {
   const [rating, setRating] = useState<number | null>(1);
   const [comment, setComment] = useState<string>("");
+  const [reviews, setReviews] = useState<ReviewModal[]>([]);
+  const { bookId } = useParams();
+
+  const fetchReviews = async (pageParam: number) => {
+    const response = await getReviewsByBookId(Number(bookId), pageParam, 3);
+    return response;
+  };
+
+  const { fetchNextPage, isFetchingNextPage, hasNextPage } = useInfiniteQuery(
+    ["reviews", bookId],
+    ({ pageParam = 0 }) => fetchReviews(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        if (!(lastPage.page.totalPages === lastPage.page.number)) {
+          return lastPage.page.number + 1;
+        }
+      },
+      cacheTime: 0,
+
+      onSuccess: (data) => {
+        const newData: ReviewModal[] = [];
+        const resData = data.pages[data.pages.length - 1]._embedded.reviews;
+        for (const key in resData) {
+          newData.push({
+            id: resData[key].id,
+            bookId: resData[key].bookId,
+            date: resData[key].date,
+            rating: resData[key].rating,
+            reviewDescription: resData[key].reviewDescription,
+            userEmail: resData[key].userEmail,
+          });
+        }
+
+        setReviews((prev) => [...prev, ...newData]);
+      },
+    }
+  );
 
   return (
     <>
@@ -43,7 +80,6 @@ export const Review: React.FC<{
             Gönder
           </Button>
         </div>
-
         {reviews.map((item, index) => (
           <ReviewItem item={item} key={index} />
         ))}
@@ -52,6 +88,22 @@ export const Review: React.FC<{
           <div className='w-full flex justify-center mt-3 mb-3'>
             <Spinner />
           </div>
+        )}
+
+        {((hasNextPage && reviews.length > 1) && (
+          <Button
+            as='button'
+            size='normal'
+            variant='outline'
+            className='mb-4'
+            onClick={() => fetchNextPage()}
+          >
+            Daha Fazla Gör
+          </Button>
+        )) || (
+          <span className='font-semibold'>
+            Gösterilecek Daha Fazla Yorum Yok.
+          </span>
         )}
       </div>
     </>

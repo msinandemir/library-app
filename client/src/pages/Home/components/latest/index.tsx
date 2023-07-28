@@ -41,7 +41,7 @@ function LatestSection() {
     fetchData();
   }, []);
   return (
-    <section className='mt-20 flex flex-col gap-5 '>
+    <article className='mt-20 flex flex-col gap-5 '>
       <SectionHeader title='SON&nbsp;EKLENENLER' />
 
       {(isLoading && (
@@ -98,7 +98,7 @@ function LatestSection() {
           </div>
         </>
       )}
-    </section>
+    </article>
   );
 }
 

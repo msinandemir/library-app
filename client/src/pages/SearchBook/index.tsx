@@ -11,6 +11,7 @@ import { Spinner } from "../../components/Spinner";
 import { scrollToTop } from "../../utils/scroll";
 import { useQuery } from "react-query";
 import { useSearchParams } from "react-router-dom";
+import { AnimatedSection } from "../../components/Animations";
 
 export const SearchBook: React.FC = () => {
   const [books, setBooks] = useState<BookModel[]>([]);
@@ -69,7 +70,7 @@ export const SearchBook: React.FC = () => {
   );
 
   return (
-    <>
+    <AnimatedSection>
       <header className='flex flex-col gap-4'>
         <Header />
         {(totalBooks > 0 && (
@@ -90,6 +91,6 @@ export const SearchBook: React.FC = () => {
         </div>
       )) || <SearchedBooks books={books} />}
       <Pagination count={totalPage} range={3} />
-    </>
+    </AnimatedSection>
   );
 };

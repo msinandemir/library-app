@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import Rating from "react-star-picker";
 import Button from "../../../../components/Button";
 import BookModel from "../../../../models/BookModel";
+import { getBookRating } from "../../../../services/book";
+import { useParams } from "react-router-dom";
 
 export const Details: React.FC<{ book: BookModel | undefined }> = ({
   book,
 }) => {
-  const [rating, setRating] = useState<number>(5);
+  const [rating, setRating] = useState<number>(0);
+  const { bookId } = useParams();
+
+  useEffect(() => {
+    const getRating = async () => {
+      const rating = await getBookRating(Number(bookId));
+      setRating(rating);
+    };
+
+    getRating();
+  }, []);
 
   return (
     <>
@@ -28,12 +40,15 @@ export const Details: React.FC<{ book: BookModel | undefined }> = ({
           <div className='flex flex-col gap-2 text-black/70'>
             <h1 className='font-semibold text-3xl'>{book?.title}</h1>
             <h6 className='text-xl'>{book?.author}</h6>
-            <Rating
-              value={rating}
-              disabled={true}
-              size={25}
-              onChange={() => {}}
-            />
+            <div className="flex gap-1">
+              <Rating
+                value={rating}
+                disabled={true}
+                size={25}
+                onChange={() => {}}
+              />
+              <span className="text-red-600 font-bold text-lg cursor-default" title="Ürün puanı hesaplanırken son 20 yorum baz alınmıştır.">*</span>
+            </div>
             <p className='font-semibold mt-4 text-sm w-[500px]'>
               {book?.description}
             </p>

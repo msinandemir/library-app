@@ -9,7 +9,7 @@ import cs from "classnames";
 function ExplorerSection() {
   const { breakpoint } = useBreakpoint();
   return (
-    <section
+    <article
       className={cs("mt-20 flex", {
         "": breakpoint === "mobile",
       })}
@@ -71,7 +71,7 @@ function ExplorerSection() {
           />
         </div>
       )}
-    </section>
+    </article>
   );
 }
 

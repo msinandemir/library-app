@@ -8,7 +8,7 @@ function CategoriesSection() {
   };
   const items = new Array(20).fill(fakeData);
   return (
-    <section className='mt-20 '>
+    <article className='mt-20 '>
       <Swiper
         className='select-none'
         spaceBetween={0}
@@ -28,7 +28,7 @@ function CategoriesSection() {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </article>
   );
 }
 

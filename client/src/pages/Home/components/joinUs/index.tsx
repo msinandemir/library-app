@@ -6,7 +6,7 @@ import { useBreakpoint } from "../../../../hooks/useBreakpoint";
 export default function JoinUsSection() {
   const {breakpoint} = useBreakpoint()
   return (
-    <section className='mt-20 flex flex-col gap-10'>
+    <article className='mt-20 flex flex-col gap-10'>
       <header>
         <h1 className={cs('font-bold text-center ',{
           'text-6xl':breakpoint==='desktop',
@@ -72,6 +72,6 @@ export default function JoinUsSection() {
           </Link>
         </div>
       </div>
-    </section>
+    </article>
   );
 }

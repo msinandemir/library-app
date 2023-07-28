@@ -8,7 +8,8 @@ export const getReviewsByBookId = async (
   size: number
 ) => {
   const response = await axios.get(
-    BASE_URL + `reviews?bookId=${bookId}&page=${pageParam}&size=${size}`
+    BASE_URL +
+      `reviews/search/findByBookId?bookId=${bookId}&page=${pageParam}&size=${size}`
   );
   return response.data;
 };

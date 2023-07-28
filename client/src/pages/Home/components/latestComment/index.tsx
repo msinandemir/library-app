@@ -26,7 +26,7 @@ function LatestCommentSection() {
     },
   ];
   return (
-    <section className='mt-20 flex flex-col gap-5'>
+    <article className='mt-20 flex flex-col gap-5'>
     <SectionHeader title='SON&nbsp;YORUMLAR' />
       <div className={cs("flex mx-auto gap-7",{
         'flex-col':breakpoint === 'mobile'
@@ -35,7 +35,7 @@ function LatestCommentSection() {
           <CommentItem item={item} key={index} />
         ))}
       </div>
-    </section>
+    </article>
   );
 }
 

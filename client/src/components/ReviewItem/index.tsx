@@ -16,7 +16,7 @@ const date = dateFormatter(String(item.date),"DD MMMM YYYY")
           <span className="text-sm font-semibold text-black/70">{date}</span>
         </div>
         <div>
-            <p className="font-semibold text-sm">{item.reviewDescription}</p>
+            <p className="font-semibold text-sm ml-5">{item.reviewDescription}</p>
         </div>
       </div>
     </>
